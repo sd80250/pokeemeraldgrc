@@ -90,8 +90,10 @@ void ReadPng(char *path, struct Image *image)
 
     int color_type = png_get_color_type(png_ptr, info_ptr);
 
-    if (color_type != PNG_COLOR_TYPE_GRAY && color_type != PNG_COLOR_TYPE_PALETTE)
+    if (color_type != PNG_COLOR_TYPE_GRAY && color_type != PNG_COLOR_TYPE_PALETTE){
+        printf("color type: %d, other color types: %d, %d", color_type, PNG_COLOR_TYPE_GRAY, PNG_COLOR_TYPE_PALETTE);
         FATAL_ERROR("\"%s\" has an unsupported color type.\n", path);
+    }
 
     // Check if the image has a palette so that we can tell if the colors need to be inverted later.
     // Don't read the palette because it's not needed for now.
@@ -158,8 +160,11 @@ void ReadPngPalette(char *path, struct Palette *palette)
     palette->numColors = numColors;
     for (int i = 0; i < numColors; i++) {
         palette->colors[i].red = colors[i].red;
+        printf("%d red: %d ", i, colors[i].red);
         palette->colors[i].green = colors[i].green;
+        printf("%d green: %d ", i, colors[i].green);
         palette->colors[i].blue = colors[i].blue;
+        printf("%d blue: %d\n", i, colors[i].blue);
     }
 
     png_destroy_read_struct(&png_ptr, &info_ptr, NULL);

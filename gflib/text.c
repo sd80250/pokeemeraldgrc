@@ -569,8 +569,8 @@ u16 Font0Func(struct TextPrinter *textPrinter)
 {
     struct TextPrinterSubStruct *subStruct = (struct TextPrinterSubStruct *)(&textPrinter->subStructFields);
 
-    if (subStruct->hasGlyphIdBeenSet == FALSE)
-    {
+    if (subStruct->hasGlyphIdBeenSet == FALSE) // sets textPrinter.subStructFields.glyphId to 0, if it hasn't been set already
+    { // in the case of the professor birch opening scene, it has already been set to 0
         subStruct->glyphId = 0;
         subStruct->hasGlyphIdBeenSet = TRUE;
     }
@@ -835,21 +835,21 @@ void DrawDownArrow(u8 windowId, u16 x, u16 y, u8 bgColor, bool8 drawArrow, u8 *c
 
 u16 RenderText(struct TextPrinter *textPrinter)
 {
-    struct TextPrinterSubStruct *subStruct = (struct TextPrinterSubStruct *)(&textPrinter->subStructFields);
+    struct TextPrinterSubStruct *subStruct = (struct TextPrinterSubStruct *)(&textPrinter->subStructFields); // currently all equal 0
     u16 currChar;
     s32 width;
     s32 widthHelper;
 
     switch (textPrinter->state)
     {
-    case 0:
-        if ((JOY_HELD(A_BUTTON | B_BUTTON)) && subStruct->hasPrintBeenSpedUp)
+    case 0: // if textPrinter is in state 0
+        if ((JOY_HELD(A_BUTTON | B_BUTTON)) && subStruct->hasPrintBeenSpedUp) // speed up text if pressing a/b button
             textPrinter->delayCounter = 0;
 
-        if (textPrinter->delayCounter && textPrinter->textSpeed)
+        if (textPrinter->delayCounter && textPrinter->textSpeed) // if neither delayCounter nor textSpeed are 0, then decrement delayCounter by one and then return 3
         {
             textPrinter->delayCounter--;
-            if (gTextFlags.canABSpeedUpPrint && (JOY_NEW(A_BUTTON | B_BUTTON)))
+            if (gTextFlags.canABSpeedUpPrint && (JOY_NEW(A_BUTTON | B_BUTTON))) // if someone presses the A/B button, skip the delay
             {
                 subStruct->hasPrintBeenSpedUp = TRUE;
                 textPrinter->delayCounter = 0;
@@ -863,9 +863,9 @@ u16 RenderText(struct TextPrinter *textPrinter)
             textPrinter->delayCounter = textPrinter->textSpeed;
 
         currChar = *textPrinter->printerTemplate.currentChar;
-        textPrinter->printerTemplate.currentChar++;
+        textPrinter->printerTemplate.currentChar++; //increment currentChar
 
-        switch (currChar)
+        switch (currChar) // explains what to do if current char is special
         {
         case CHAR_NEWLINE:
             textPrinter->printerTemplate.currentX = textPrinter->printerTemplate.x;
@@ -1022,7 +1022,7 @@ u16 RenderText(struct TextPrinter *textPrinter)
             return 1;
         }
 
-        switch (subStruct->glyphId)
+        switch (subStruct->glyphId) // get glyphId
         {
         case 0:
             DecompressGlyphFont0(currChar, textPrinter->japanese);
@@ -1066,7 +1066,7 @@ u16 RenderText(struct TextPrinter *textPrinter)
                 textPrinter->printerTemplate.currentX += gCurGlyph.width;
         }
         return 0;
-    case 1:
+    case 1: // if textPrinter is in state 1
         if (TextPrinterWait(textPrinter))
             textPrinter->state = 0;
         return 3;
@@ -1598,8 +1598,8 @@ void DecompressGlyphFont0(u16 glyphId, bool32 isJapanese)
     }
     else
     {
-        glyphs = gFont0LatinGlyphs + (0x20 * glyphId);
-        gCurGlyph.width = gFont0LatinGlyphWidths[glyphId];
+        glyphs = gFont0LatinGlyphs + (0x20 * glyphId); // gFont0LatinGlyphs === &gFont0LatinGlyphs[0]; finds glyph from glyphId
+        gCurGlyph.width = gFont0LatinGlyphWidths[glyphId]; // get corresponding glyph width
 
         if (gCurGlyph.width <= 8)
         {
@@ -1768,10 +1768,10 @@ void DecompressGlyphFont1(u16 glyphId, bool32 isJapanese)
     }
     else
     {
-        glyphs = gFont1LatinGlyphs + (0x20 * glyphId);
+        glyphs = gFont1LatinGlyphs + (0x20 * glyphId); // gFont1LatinGlyphs === &gFont1LatinGlyphs[0]]; finds glyph from glyphId
         gCurGlyph.width = gFont1LatinGlyphWidths[glyphId];
 
-        if (gCurGlyph.width <= 8)
+        if (gCurGlyph.width <= 8) // is 8 the minimum width???
         {
             DecompressGlyphTile(glyphs, gCurGlyph.gfxBufferTop);
             DecompressGlyphTile(glyphs + 0x10, gCurGlyph.gfxBufferBottom);

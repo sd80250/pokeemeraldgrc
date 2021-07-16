@@ -6,7 +6,7 @@
 EWRAM_DATA u8 gStringVar1[0x100] = {0};
 EWRAM_DATA u8 gStringVar2[0x100] = {0};
 EWRAM_DATA u8 gStringVar3[0x100] = {0};
-EWRAM_DATA u8 gStringVar4[0x3E8] = {0};
+EWRAM_DATA u8 gStringVar4[0x3E8] = {0}; // 1000 characters long text
 EWRAM_DATA static u8 sUnknownStringVar[16] = {0};
 
 static const u8 sDigits[] = __("0123456789ABCDEF");
@@ -336,24 +336,25 @@ u8 *StringExpandPlaceholders(u8 *dest, const u8 *src)
 {
     for (;;)
     {
-        u8 c = *src++;
+        u8 c = *src++; // goes through the text byte by byte; src address increments, but it returns the actual value
         u8 placeholderId;
         const u8 *expandedString;
 
-        switch (c)
+        switch (c) // c is what's stored on that byte of the string
         {
         case PLACEHOLDER_BEGIN:
             placeholderId = *src++;
-            expandedString = GetExpandedPlaceholder(placeholderId);
-            dest = StringExpandPlaceholders(dest, expandedString);
-            break;
+            expandedString = GetExpandedPlaceholder(placeholderId); // adds actual strings to placeholders
+            dest = StringExpandPlaceholders(dest, expandedString); // recursive method???
+            break; // go to the next value
         case EXT_CTRL_CODE_BEGIN:
-            *dest++ = c;
-            c = *src++;
-            *dest++ = c;
+            *dest++ = c; // dest is set to c, and points to the next (character??)
+            c = *src++; // c is set to the next byte
+            *dest++ = c; // the next dest is set to c, and points to the next (character??)
 
             switch (c)
             {
+            // if c is any of these cases, then go to the next value
             case EXT_CTRL_CODE_RESET_SIZE:
             case EXT_CTRL_CODE_PAUSE_UNTIL_PRESS:
             case EXT_CTRL_CODE_FILL_WINDOW:
@@ -362,16 +363,20 @@ u8 *StringExpandPlaceholders(u8 *dest, const u8 *src)
             case EXT_CTRL_CODE_PAUSE_MUSIC:
             case EXT_CTRL_CODE_RESUME_MUSIC:
                 break;
+
+            // if c is this, then let the value of dest equal the value of src for the next 3 values
             case EXT_CTRL_CODE_COLOR_HIGHLIGHT_SHADOW:
                 *dest++ = *src++;
+            // two values
             case EXT_CTRL_CODE_PLAY_BGM:
                 *dest++ = *src++;
+            // if c isn't any of the above, then let c equal the value of src for the next value
             default:
                 *dest++ = *src++;
             }
             break;
         case EOS:
-            *dest = EOS;
+            *dest = EOS; // dest set to EOS
             return dest;
         case CHAR_PROMPT_SCROLL:
         case CHAR_PROMPT_CLEAR:

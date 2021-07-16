@@ -1317,11 +1317,11 @@ static void Task_NewGameBirchSpeech_WaitToShowBirch(u8 taskId)
     }
 }
 
-static void Task_NewGameBirchSpeech_WaitForSpriteFadeInWelcome(u8 taskId)
+static void Task_NewGameBirchSpeech_WaitForSpriteFadeInWelcome(u8 taskId) //most likely the new game speech
 {
     if (gTasks[taskId].tIsDoneFadingSprites)
     {
-        gSprites[gTasks[taskId].tBirchSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+        gSprites[gTasks[taskId].tBirchSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL; // seems to wait a set amount of time
         if (gTasks[taskId].tTimer)
         {
             gTasks[taskId].tTimer--;
@@ -1336,8 +1336,8 @@ static void Task_NewGameBirchSpeech_WaitForSpriteFadeInWelcome(u8 taskId)
             CopyWindowToVram(0, 2);
             NewGameBirchSpeech_ClearWindow(0);
             StringExpandPlaceholders(gStringVar4, gText_Birch_Welcome);
-            AddTextPrinterForMessage(1);
-            gTasks[taskId].func = Task_NewGameBirchSpeech_ThisIsAPokemon;
+            AddTextPrinterForMessage(1); // uses font 1
+            gTasks[taskId].func = Task_NewGameBirchSpeech_ThisIsAPokemon; // assigns function pointer to gTasks[taskId], allowing some external process to later go to that function
         }
     }
 }
