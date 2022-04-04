@@ -1,53 +1,0 @@
-text_titles,address,text,file_name, file_type, unused"EventTicket_Text_OldSeaMapTooFar","82C68A5","What's up, youngster?\p
-What, it's you who's supposed to have\n
-a tattered old map?\p
-Let's have a look.\n
-… … … … … …\p
-Boy, this is quite a ways away.\n
-I'm afraid I can't help you…$
-","data\text\event_ticket_2.inc","inc_file""EventTicket_Text_BrineyHoldOnASecond","82C6951","BRINEY: Hold on a second!\p
-What's the idea of turning down\n
-someone that I owe so much to?$
-","data\text\event_ticket_2.inc","inc_file""EventTicket_Text_BrineyLetsSail","82C69AA","{PLAYER}{KUN}, I'm terribly sorry.\p
-You came to me seeking my help,\n
-and we almost turned you away.\p
-Well, let me make things right.\p
-We'll sail right away, of course!\p
-Let's find this island on\n
-this OLD SEA MAP!$
-","data\text\event_ticket_2.inc","inc_file""EventTicket_Text_OddTicketGetOnBoard","82C6A71","Is it you who brought that odd\n
-ticket?\p
-Where you're trying to go is an island\n
-that's far, far away.\p
-No one knows what awaits there…\p
-The very thought excites my blood\n
-as a sailing man!\p
-Get on board, youngster!$
-","data\text\event_ticket_2.inc","inc_file""FarawayIsland_Entrance_Text_SailorReturn","82C6B42","CAPT. BRINEY can be so maddeningly\n
-fickle…\p
-Do you want to return to LILYCOVE?$
-","data\text\event_ticket_2.inc","inc_file""BirthIsland_Harbor_Text_SailorReturn","82C6B90","What an oddly shaped island, eh?\n
-Do you want to return to LILYCOVE?$
-","data\text\event_ticket_2.inc","inc_file""EventTicket_Text_OddTicketsWhereTo","82C6BD4","Is it you who brought those\n
-odd tickets?\p
-… … …Hm.\p
-These tickets will get you to islands\n
-that are far, far away.\p
-No one knows what awaits there,\n
-or what may happen there.\p
-The very thought excites my blood\n
-as a sailing man!\p
-Get on board, youngster!\n
-Where shall we sail first?$
-","data\text\event_ticket_2.inc","inc_file""NavelRock_Harbor_Text_SailorReturn","82C6CE6","Did… Did you hear that?\n
-That low growling from deep in there.\p
-Are you sure it's safe?\n
-Do you think we should leave?$
-","data\text\event_ticket_2.inc","inc_file""FarawayIsland_Entrance_Text_Sign","82C6D5A","The writing is fading as if it was\n
-written a long time ago…\p
-“…ber, 6th day\n
-If any human…sets foot here…\l
-again…et it be a kindhearted pers…\l
-…ith that hope, I depar…”$
-","data\text\event_ticket_2.inc","inc_file""FarawayIsland_Interior_Text_Mew","82C6DFF","Myuu…$
-","data\text\event_ticket_2.inc","inc_file"
