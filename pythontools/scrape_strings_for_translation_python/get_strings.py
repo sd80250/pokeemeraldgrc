@@ -12,14 +12,14 @@ csv_file = Path("tools/scrape_strings_for_translation_python/results/test_file.c
 file_type = "inc_file" # what type of scraping should be done? i.e. how is the string formatted within the document?
 
 class TextToTranslate:
-    def __init__(self, text_title="", text_inside="", address=""): # TODO: add unused later; contest_strings.inc has a few mass unused segments to manually add
-        self.text_title, self.text_inside, self.address = text_title, text_inside, address
+    def __init__(self, text_title="", text_inside="", address="", unused = False): # TODO: contest_strings.inc has a few mass unused segments to manually add
+        self.text_title, self.text_inside, self.address, self.unused = text_title, text_inside, address, unused
 
     def append_text_inside(self, string):
         self.text_inside += string
     
     def __copy__(self):
-        return type(self)(text_title=self.text_title, text_inside=self.text_inside,address=self.address)
+        return type(self)(text_title=self.text_title, text_inside=self.text_inside,address=self.address, unused=self.unused)
 
 
 def scrape_file(file_path, csv_file, file_type):
@@ -55,6 +55,8 @@ def scrape_file(file_path, csv_file, file_type):
                     dialog_box.append_text_inside(line[13:-2] +"\n")
                 elif line[0] == '@':
                     # starts with '@', which starts all comments
+                    if line[:8] == "@ Unused":
+                        dialog_box.unused = True
                     continue
                 else: # every file should start with this type of line
                     # gives us the text title and address
@@ -79,7 +81,7 @@ def scrape_file(file_path, csv_file, file_type):
     with csv_file.open("a", encoding='utf-8') as file:
         for dialog_box in dialog_boxes:
             # file.write('"' + text_titles[i] + '","' + addresses[i] + '","' + text_insides[i] + '","' + str(file_path)+ '","' + file_type + '","' + unuseds[i] + '"\r')
-            file.write('"' + dialog_box.text_title + '","' + dialog_box.address + '","' + dialog_box.text_inside + '","' + str(file_path)+ '","' + file_type + '"\r')
+            file.write('"' + dialog_box.text_title + '","' + dialog_box.address + '","' + dialog_box.text_inside + '","' + str(file_path)+ '","' + file_type + '","' + dialog_box.unused +'"\r')
 
 if __name__ == '__main__':
     # # DEBUG CODE
