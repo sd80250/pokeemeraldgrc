@@ -1,0 +1,83 @@
+text_title,address,text,file_name,file_type,unused,translation,credit,notes
+gText_AbnormalWeatherEnded_Rain,8273656,"The massive downpour appears to\n
+have stopped…$
+",data\text\abnormal_weather.inc,inc_file,False,"ἠ μεγάλη ἐπομβρία φαίνεται\n
+πεπαυκέναι…$",Shawn Duan,
+gText_AbnormalWeatherEnded_Sun,8273684,"The intense sunshine appears to\n
+have subsided…$
+",data\text\abnormal_weather.inc,inc_file,False,"ἠ ἰσχυρὰ εἵλησις φαίνεται\n
+λελωφηκέναι…$",Shawn Duan,
+gText_ApprenticeChallenge0,82B6EA5,"Um, I'm {STR_VAR_1}'s no. {STR_VAR_2} apprentice.\n
+Snivel… This tension is getting to me…$
+",data\text\apprentice.inc,inc_file,False,"ἐ- ἐγὼ μαθητὴς {STR_VAR_2} τοῦ {STR_VAR_1}.\n
+ἔ! ὁ φόβος μοι νικᾷ…$",Shawn Duan,check if Apprentices are male/female
+gText_ApprenticeChallenge1,82B6EEC,"I'm {STR_VAR_1}'s no. {STR_VAR_2} apprentice!\n
+Here we come!$
+",data\text\apprentice.inc,inc_file,False,"ἐγὼ μαθητὴς {STR_VAR_2} τοῦ {STR_VAR_1}!\n
+ἄγε δεῦρο!$",Shawn Duan,check if Apprentices are male/female
+gText_ApprenticeChallenge2,82B6F16,"I'm the no. {STR_VAR_2} apprentice of {STR_VAR_1}!\n
+Accept my challenge!$
+",data\text\apprentice.inc,inc_file,False,"ἐγὼ μαθητὴς {STR_VAR_2} τοῦ {STR_VAR_1}!\n
+δέξαι τὴν πρόκλησίν μου!$",Shawn Duan,check if Apprentices are male/female
+gText_ApprenticeChallenge3,82B6F4C,"Um… I'm {STR_VAR_1}'s no. {STR_VAR_2} apprentice…\n
+Do you think someone like me can win?$
+",data\text\apprentice.inc,inc_file,False,"ἐ- ἐγὼ μαθητὴς {STR_VAR_2} τοῦ {STR_VAR_1}.\n
+οἴῃ τινα ὡς ἐμὲ δύναται νικᾷν;$",Shawn Duan,check if Apprentices are male/female
+gText_ApprenticeChallenge4,82B6F92,"I'm {STR_VAR_1}'s no. {STR_VAR_2} apprentice!\n
+I'll let you challenge me!$
+",data\text\apprentice.inc,inc_file,False,"ἐγὼ μαθητὴς {STR_VAR_2} τοῦ {STR_VAR_1}!\n
+ἐάω σε προκαλεῖσθαί με!$",Shawn Duan,check if Apprentices are male/female
+gText_ApprenticeChallenge5,82B6FC9,"I'm horribly busy, but I also happen\n
+to be {STR_VAR_1}'s no. {STR_VAR_2} apprentice.$
+",data\text\apprentice.inc,inc_file,False,"λίαν ἄσχολός εἰμι, ἐγὼ δὲ καὶ τυχγάνω ὢν\n
+ὁ μαθητής {STR_VAR_2} τοῦ {STR_VAR_1}.$",Shawn Duan,check if Apprentices are male/female
+gText_ApprenticeChallenge6,82B700C,"I'm {STR_VAR_1}'s no. {STR_VAR_2} apprentice.\n
+Glad to meet you!$
+",data\text\apprentice.inc,inc_file,False,"ἐγὼ μαθητὴς {STR_VAR_2} τοῦ {STR_VAR_1}.\n
+χαίρω πολύ!$",Shawn Duan,check if Apprentices are male/female
+gText_ApprenticeChallenge7,82B703A,"I serve as {STR_VAR_1}'s no. {STR_VAR_2} apprentice.\n
+May I begin?$
+",data\text\apprentice.inc,inc_file,False,"μαθητὴς {STR_VAR_2} ὑπάρχω τῷ {STR_VAR_1}.\n
+ἄρχοιμι;$",Shawn Duan,check if Apprentices are male/female
+gText_ApprenticeChallenge8,82B706A,"Eek! I'm {STR_VAR_1}'s no. {STR_VAR_2} apprentice!\n
+I'll do my best!$
+",data\text\apprentice.inc,inc_file,False,"αἴαι! ἐγὼ μαθητὴς {STR_VAR_2} τοῦ {STR_VAR_1}.\n
+πράξω ὡς ἄριστος!$",Shawn Duan,check if Apprentices are male/female
+gText_ApprenticeChallenge9,82B709C,"Yeehaw! I'm {STR_VAR_1}'s no. {STR_VAR_2} apprentice!\n
+Put 'em up!$
+",data\text\apprentice.inc,inc_file,False,"μαθητὴς {STR_VAR_2}. τοῦ {STR_VAR_1}.\n
+μάχωμεθα.$",Shawn Duan,check if Apprentices are male/female; supposed to be like a Spartan
+gText_ApprenticeChallenge10,82B70CC,"I'm {STR_VAR_1}'s 1,000th apprentice!\n
+Actually, I'm no. {STR_VAR_2}! Here goes!$
+",data\text\apprentice.inc,inc_file,False,"ἐγὼ μαθητὴς χιλιστός τοῦ {STR_VAR_1}!\n
+οὐχί, ἀληθινῶς εἰμι μαθητὴς {STR_VAR_2}! ἄγε!$",Shawn Duan,check if Apprentices are male/female
+gText_ApprenticeChallenge11,82B710A,"Yeah, I'm {STR_VAR_1}'s no. {STR_VAR_2} apprentice!\n
+Let's get rockin' and a-rollin'!$
+",data\text\apprentice.inc,inc_file,False,,,check if Apprentices are male/female
+gText_ApprenticeChallenge12,82B714D,"Yippee-yahoo! I'm what you call\n
+{STR_VAR_1}'s no. {STR_VAR_2} apprentice!$
+",data\text\apprentice.inc,inc_file,False,,,check if Apprentices are male/female
+gText_ApprenticeChallenge13,82B7185,"Cough! I'm {STR_VAR_1}'s no. {STR_VAR_2} apprentice.\n
+Good to meet you! Cough!$
+",data\text\apprentice.inc,inc_file,False,"βήξ! ἐγὼ μαθητὴς {STR_VAR_2} τοῦ {STR_VAR_1}.\n
+χαίρε πολύ! βήξ!$",Shawn Duan,check if Apprentices are male/female
+gText_ApprenticeChallenge14,82B71C1,"This is nerve-racking…\n
+I'm the no. {STR_VAR_2} apprentice of {STR_VAR_1}.$
+",data\text\apprentice.inc,inc_file,False,"ὁ φόβος με ἔχει…\n
+ἐγὼ μαθητὴς {STR_VAR_2} τοῦ {STR_VAR_1}.$",Shawn Duan,check if Apprentices are male/female
+gText_ApprenticeChallenge15,82B71F9,"I am {STR_VAR_1}'s no. {STR_VAR_2} apprentice,\n
+and that's no lie.$
+",data\text\apprentice.inc,inc_file,False,"ἐγὼ μαθητὴς {STR_VAR_2} τοῦ {STR_VAR_1},\n
+καὶ οὔκ ἐστι ψεῦδος.$",Shawn Duan,check if Apprentices are male/female
+gText_ApprenticePleaseTeach0,82B7229,"Are you… {PLAYER}?\n
+Oh! Sniff…sob…\p
+Oh! S-sorry…\n
+I'm so nervous, I can't help crying…\p
+I'm {STR_VAR_1}, and I really look up\n
+to you, {PLAYER}.\p
+I… I had this dream of one day meeting\n
+you and asking you about POKéMON.\p
+Please, please, {PLAYER}!\n
+Please teach me about POKéMON!$
+",data\text\apprentice.inc,inc_file,False,"σὺ εἶ… {PLAYER};\n
+ἆ! ",Shawn Duan,check if Apprentices are male/female

@@ -1,0 +1,2 @@
+data\text\abnormal_weather.inc
+data\text\apprentice.inc

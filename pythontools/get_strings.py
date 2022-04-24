@@ -2,8 +2,6 @@ import os
 from pathlib import Path
 from copy import copy, deepcopy
 
-
-
 class TextToTranslate:
     def __init__(self, text_title="", text_inside="", address="", file_path=None, file_type="", unused=False):
         self.text_title, self.text_inside, self.address, self.file_path, self.file_type, self.unused = text_title, text_inside, address, file_path, file_type, unused
@@ -59,14 +57,14 @@ def scrape_file(file_path, csv_file, file_type):
         # actual code         
         if file_type == "inc_file":
             next_is_unused = False # if the line says @ Unused, then the NEXT line will be the header of the unused line.
-            is_string_literal = True
+            has_string_literal = False
             while True:
                 # print(text_titles, text_insides, addresses)
                 line = file.readline()
                 # print(line)
                 # breaks if the line is None
                 if not line:
-                    if is_string_literal:
+                    if has_string_literal:
                         to_translate_texts.append(copy(dialog_box))
                     break
                 
@@ -80,17 +78,20 @@ def scrape_file(file_path, csv_file, file_type):
                     if isFirst: # if there's anything that's written before the first text title and address, ignore it.
                         continue
                     if '.string "' not in line: # if the line starts with a tab but does not have a ".string" tag, continue
-                        is_string_literal = False
+                    # TODO: mark non-string tags as requiring manual input for translation!
                         continue
-                    dialog_box.append_text_inside(line[10:-2] + "\n") # this \n is not the 'official' line break found inside the actual game text itself
+                    else:
+                        has_string_literal = True
+                        dialog_box.append_text_inside(line[10:-2] + "\n") # this \n is not the 'official' line break found inside the actual game text itself
                 elif line[0:4] == "    ":
                     # same as above, except indices have to be modified
                     if isFirst:
                         continue
                     if '.string "' not in line:
-                        is_string_literal = False
                         continue
-                    dialog_box.append_text_inside(line[13:-2] +"\n")
+                    else:
+                        has_string_literal = True
+                        dialog_box.append_text_inside(line[13:-2] +"\n")
                 elif line[0] == '@':
                     # starts with '@', which starts all comments
                     next_is_unused = line[1:].lower().strip() == "unused" or line[1:8].lower().strip() == "unused"
@@ -99,11 +100,9 @@ def scrape_file(file_path, csv_file, file_type):
                     # this also means that a new line is being formed; this will be a surer way to tell when a new section is being formed
                     if isFirst:
                         isFirst = False
-                    else:
-                        if not is_string_literal:
-                            is_string_literal = True # if the preceeding lines were not strings, then don't add this to the to_translate_texts array
-                        else:
-                            to_translate_texts.append(copy(dialog_box))
+                    elif has_string_literal: # if there is a string literal, then add it; if not, don't, and continue on.
+                        to_translate_texts.append(copy(dialog_box))
+                        has_string_literal = False # reset this for the next iteration 
                     text_title = line.split(":")[0] # gives the string until the first ':' character
                     address = ""
                     if len(line.split("@")) > 1:
