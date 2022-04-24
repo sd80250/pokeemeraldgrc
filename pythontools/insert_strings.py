@@ -3,6 +3,27 @@ from pathlib import Path
 import csv
 from shutil import copyfile
 
+TONOS_OXIA = {
+    "ά": "ά",
+    "έ": "έ",
+    "ή": "ή",
+    "ί": "ί",
+    "ό": "ό",
+    "ύ": "ύ",
+    "ώ": "ώ",
+}
+
+def tonos_oxia_converter(text, reverse=False):
+    """For the Ancient Greek language. Converts characters accented with the
+    tonos (meant for Modern Greek) into the oxia equivalent. Without this
+    normalization, string comparisons will fail."""
+    for char_tonos, char_oxia in TONOS_OXIA.items():
+        if not reverse:
+            text = text.replace(char_tonos, char_oxia)
+        else:
+            text = text.replace(char_oxia, char_tonos)
+    return text
+
 def insert_strings(csv_file_path, file_type):
     with open(Path("pythontools/temp/phase.txt")) as phase_file:
         if phase_file.readline() != 'insert':
@@ -62,7 +83,7 @@ def insert_strings(csv_file_path, file_type):
                     # delete these lines, and replace with the translation
                     if not skip_insert: # if there isn't anything in translation, then skip it.
                         if len(translation_lines) > 0:
-                            data[i] = '\t.string "' + translation_lines.pop(0).strip() + '"\n'
+                            data[i] = '\t.string "' + tonos_oxia_converter(translation_lines.pop(0).strip(), reverse=True) + '"\n'
                         else:
                             data.pop(i) # removes value from list
                             i -= 1 # corrects index so that the index will still correspond to data list

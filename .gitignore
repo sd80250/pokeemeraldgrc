@@ -37,3 +37,6 @@ porymap.project.cfg
 _temptest/
 agbcc/
 pythontools/results/
+pythontools/temp/
+pythontools/translations/
+env/
